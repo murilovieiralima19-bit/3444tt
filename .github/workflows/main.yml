@@ -1,0 +1,16 @@
+name: Windows Cloud PC - Anydesk (Optimized)
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Start Building...
+    runs-on: windows-latest
+    timeout-minutes: 10080
+    steps:
+      - name: Downloading & Installing Essentials
+        run: |
+          Invoke-WebRequest -Uri "URL_DO_BAT" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
+      - name: Log In To AnyDesk
+        run: |
+          if (Test-Path "start.bat") { cmd /c start.bat }
